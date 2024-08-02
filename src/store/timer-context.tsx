@@ -36,7 +36,11 @@ type TimersContextProviderProps = {
   children: ReactNode;
 };
 
-function reducer(state, action): TimersState {}
+type Action = {
+  type: "Add_Timer" | "Start_Timers" | "Stop_Timers";
+};
+
+function reducer(state: TimersState, action: Action): TimersState {}
 
 export default function TimersContextProvider({
   children,
