@@ -3,7 +3,7 @@ import Button from "./UI/Button.tsx";
 import { TimersContext } from "../store/timer-context.tsx";
 
 export default function Header() {
-  const timersContext = useContext(TimersContext);
+  const timersContext = useContext(TimersContext)!;
 
   return (
     <header>
