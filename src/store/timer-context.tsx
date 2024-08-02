@@ -74,8 +74,8 @@ export default function TimersContextProvider({
   const [timersState, dispatch] = useReducer(reducer, initialState);
 
   const ctx: TimersContextValue = {
-    timers: [],
-    isRunning: false,
+    timers: timersState.timers,
+    isRunning: timersState.isRunning,
     addTimer(timerData) {
       dispatch({ type: "Add_Timer", payload: timerData });
     },
