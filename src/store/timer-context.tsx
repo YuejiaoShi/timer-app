@@ -36,9 +36,18 @@ type TimersContextProviderProps = {
   children: ReactNode;
 };
 
-type Action = {
-  type: "Add_Timer" | "Start_Timers" | "Stop_Timers";
+type StartTimersAction = {
+  type: "Start_Timers";
 };
+type StopTimersAction = {
+  type: "Stop_Timers";
+};
+type AddTimerAction = {
+  type: "Add_Timer";
+  payload: Timer;
+};
+
+type Action = StartTimersAction | StopTimersAction | AddTimerAction;
 
 function reducer(state: TimersState, action: Action): TimersState {
   switch (action.type) {
@@ -47,7 +56,15 @@ function reducer(state: TimersState, action: Action): TimersState {
     case "Stop_Timers":
       return { ...state, isRunning: false };
     case "Add_Timer":
-      return { ...state, timers:[...state.timers,{name:,duration:}]  };
+      return {
+        ...state,
+        timers: [
+          ...state.timers,
+          { name: action.payload.name, duration: action.payload.duration },
+        ],
+      };
+    default:
+      return state;
   }
 }
 
