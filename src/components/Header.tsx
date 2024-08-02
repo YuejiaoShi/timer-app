@@ -1,12 +1,8 @@
-import { useContext } from "react";
 import Button from "./UI/Button.tsx";
-import { TimersContext } from "../store/timer-context.tsx";
+import { useTimersContext } from "../store/timer-context.tsx";
 
 export default function Header() {
-  const timersContext = useContext(TimersContext)!;
-  if(timersContext === null){
-    throw new Error('TimersContext is undefined. Make sure you are using it within a TimersProvider.')
-  }
+  const timersContext = useTimersContext();
 
   return (
     <header>

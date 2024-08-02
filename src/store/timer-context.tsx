@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 type Timer = {
   name: string;
@@ -16,7 +16,16 @@ type TimersContextValue = TimersState & {
   stopTimers: () => void;
 };
 
-export const TimersContext = createContext<TimersContextValue | null>(null);
+const TimersContext = createContext<TimersContextValue | null>(null);
+export function useTimersContext() {
+  const timersContext = useContext(TimersContext);
+  if (timersContext === null) {
+    throw new Error(
+      "TimersContext is undefined. Make sure you are using it within a TimersProvider."
+    );
+  }
+  return timersContext;
+}
 
 type TimersContextProviderProps = {
   children: ReactNode;
