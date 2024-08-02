@@ -16,7 +16,7 @@ type TimersContextValue = TimersState & {
   stopTimers: () => void;
 };
 
-const TimersContext = createContext<TimersContextValue | null>(null);
+export const TimersContext = createContext<TimersContextValue | null>(null);
 
 type TimersContextProviderProps = {
   children: ReactNode;
