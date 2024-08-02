@@ -40,7 +40,16 @@ type Action = {
   type: "Add_Timer" | "Start_Timers" | "Stop_Timers";
 };
 
-function reducer(state: TimersState, action: Action): TimersState {}
+function reducer(state: TimersState, action: Action): TimersState {
+  switch (action.type) {
+    case "Start_Timers":
+      return { ...state, isRunning: true };
+    case "Stop_Timers":
+      return { ...state, isRunning: false };
+    case "Add_Timer":
+      return { ...state, timers:[...state.timers,{name:,duration:}]  };
+  }
+}
 
 export default function TimersContextProvider({
   children,
