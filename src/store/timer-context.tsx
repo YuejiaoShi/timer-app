@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, ReactNode } from "react";
 
 type Timer = {
   name: string;
@@ -17,3 +17,11 @@ type TimersContextValue = TimersState & {
 };
 
 const TimersContext = createContext<TimersContextValue>(null);
+
+type TimersContextProviderProps = {
+  children: ReactNode;
+};
+
+function TimersContextProvider({ children }: TimerContextProviderProps) {
+  return;
+}
