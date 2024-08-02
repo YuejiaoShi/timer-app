@@ -22,7 +22,9 @@ type TimersContextProviderProps = {
   children: ReactNode;
 };
 
-function TimersContextProvider({ children }: TimersContextProviderProps) {
+export default function TimersContextProvider({
+  children,
+}: TimersContextProviderProps) {
   const ctx: TimersContextValue = {
     timers: [],
     isRunning: false,
