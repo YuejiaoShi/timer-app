@@ -23,8 +23,6 @@ type TimersContextValue = TimersState & {
 
 const TimersContext = createContext<TimersContextValue | null>(null);
 export function useTimersContext() {
-  useReducer(reducer, initialState);
-
   const timersContext = useContext(TimersContext);
   if (timersContext === null) {
     throw new Error(
@@ -38,9 +36,13 @@ type TimersContextProviderProps = {
   children: ReactNode;
 };
 
+function reducer(action, payload) {}
+
 export default function TimersContextProvider({
   children,
 }: TimersContextProviderProps) {
+  const [timersState, dispatch] = useReducer(reducer, initialState);
+
   const ctx: TimersContextValue = {
     timers: [],
     isRunning: false,
