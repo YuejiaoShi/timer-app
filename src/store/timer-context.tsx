@@ -77,13 +77,13 @@ export default function TimersContextProvider({
     timers: [],
     isRunning: false,
     addTimer(timerData) {
-      //
+      dispatch({ type: "Add_Timer", payload: timerData });
     },
     startTimers() {
-      //
+      dispatch({ type: "Start_Timers" });
     },
     stopTimers() {
-      //
+      dispatch({ type: "Stop_Timers" });
     },
   };
 
