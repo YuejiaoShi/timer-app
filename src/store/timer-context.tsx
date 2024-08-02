@@ -16,12 +16,28 @@ type TimersContextValue = TimersState & {
   stopTimers: () => void;
 };
 
-const TimersContext = createContext<TimersContextValue>(null);
+const TimersContext = createContext<TimersContextValue | null>(null);
 
 type TimersContextProviderProps = {
   children: ReactNode;
 };
 
-function TimersContextProvider({ children }: TimerContextProviderProps) {
-  return;
+function TimersContextProvider({ children }: TimersContextProviderProps) {
+  const ctx: TimersContextValue = {
+    timers: [],
+    isRunning: false,
+    addTimer(timerData) {
+      //
+    },
+    startTimers() {
+      //
+    },
+    stopTimers() {
+      //
+    },
+  };
+
+  return (
+    <TimersContext.Provider value={ctx}>{children}</TimersContext.Provider>
+  );
 }
